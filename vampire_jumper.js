@@ -4,6 +4,10 @@ class Scene1 extends Phaser.Scene {
         super('scene 1');
     }
 
+	init() {
+		this.score = 0;
+	}
+
     preload() {
         this.load.image('vampire', 'assets/Vampire.png');
         this.load.image('platform', 'assets/Platform.png');
@@ -12,6 +16,7 @@ class Scene1 extends Phaser.Scene {
 
     create() {
         this.cameras.main.fadeIn(1000);
+
         this.w = this.scale.width;
         this.h = this.scale.height;
 
@@ -20,7 +25,7 @@ class Scene1 extends Phaser.Scene {
 
         this.platforms = this.physics.add.staticGroup();
 
-        for (let i = 0; i < 5; i++)
+        for (let i = -1; i < 4; i++)
 		{
 			const x = Phaser.Math.Between(80, 280);
 			const y = 150 * i;
@@ -32,7 +37,7 @@ class Scene1 extends Phaser.Scene {
 			body.updateFromGameObject();
 		}
 
-        this.player = this.physics.add.sprite(this.w * 0.5, this.h * 0.78, 'vampire').setScale(this.w * 0.0005);
+        this.player = this.physics.add.sprite(this.w * 0.5, this.h * 0.78, 'vampire').setScale(this.w * 0.0004);
         this.player.setVelocityY(100);
         this.cameras.main.startFollow(this.player, false, 1, 1, 0, 0);
 		this.cameras.main.setDeadzone(this.w * 1.5);
@@ -42,6 +47,12 @@ class Scene1 extends Phaser.Scene {
 
         this.physics.add.collider(this.ground, this.player);
         this.physics.add.collider(this.platforms, this.player);
+
+		this.ty = 0;
+
+		this.scoreText = this.add.text(70, 10, 'Score: 0', { color: '#000', fontSize: 24 })
+			.setScrollFactor(0)
+			.setOrigin(0.5, 0);
     }
 
     update() {
@@ -61,6 +72,11 @@ class Scene1 extends Phaser.Scene {
 		if (touchingDown)
 		{
 			this.player.setVelocityY(-300);
+			if (this.ty > this.player.y + 50 || this.ty < this.player.y - 50) {
+				this.ty = this.player.y;
+				this.score++;
+				this.scoreText.text = `Score: ${this.score}`;
+			}
 		}
 
 
@@ -135,7 +151,7 @@ const game = new Phaser.Game({
     physics: {
         default: 'arcade',
         arcade: { 
-            debug: true ,
+            //debug: true ,
             gravity: {
                 y: 200
             },
