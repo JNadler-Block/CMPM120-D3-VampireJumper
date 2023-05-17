@@ -1,4 +1,4 @@
-Vampire Jumper can be played [here](https://jnadler-block.github.io/CMPM120-D3-VampireJumper/)
+Vampire Jumper can be played [here](https://jnadler-block.github.io/CMPM120-D3-VampireJumper/)  
 Created by [Jackson Nadler-Block](https://github.com/JNadler-Block)
 
 Gameplay/Experience requirements:
