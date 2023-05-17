@@ -27,7 +27,7 @@ class Scene1 extends Phaser.Scene {
 
         for (let i = -1; i < 4; i++)
 		{
-			const x = Phaser.Math.Between(80, 280);
+			const x = Phaser.Math.Between(55, 300);
 			const y = 150 * i;
 	
 			const platform = this.platforms.create(x, y, 'platform');
@@ -52,7 +52,13 @@ class Scene1 extends Phaser.Scene {
 
 		this.scoreText = this.add.text(70, 10, 'Score: 0', { color: '#000000', fontSize: 24 })
 			.setScrollFactor(0)
-			.setOrigin(0.5, 0);
+			.setOrigin(0.5, 0)
+			.setStroke(0x000000, 1);
+
+		this.levelText = this.add.text(280, 10, 'Level 1', { color: '#000000', fontSize: 24 })
+			.setScrollFactor(0)
+			.setOrigin(0.5, 0)
+			.setStroke(0x000000, 1);
 
 		this.directions = this.add.text(175, 80, 'Use <- and -> to move left and right.', { color: '#ffffff', fontSize: 14})
 			.setScrollFactor(0)
@@ -67,6 +73,7 @@ class Scene1 extends Phaser.Scene {
 			const scrollY = this.cameras.main.scrollY;
 			if (platform.y >= scrollY + 700)
 			{
+				platform.x = Phaser.Math.Between(55, 300);
 				platform.y = scrollY - Phaser.Math.Between(50, 100);
 				platform.body.updateFromGameObject();
 			}
@@ -186,7 +193,7 @@ class Scene2 extends Phaser.Scene {
 
         for (let i = -1; i < 4; i++)
 		{
-			const x = Phaser.Math.Between(80, 280);
+			const x = Phaser.Math.Between(40, 310);
 			const y = 150 * i;
 	
 			const platform = this.platforms.create(x, y, 'platform');
@@ -211,7 +218,13 @@ class Scene2 extends Phaser.Scene {
 
 		this.scoreText = this.add.text(70, 10, 'Score: 0', { color: '#000000', fontSize: 24 })
 			.setScrollFactor(0)
-			.setOrigin(0.5, 0);
+			.setOrigin(0.5, 0)
+			.setStroke(0x000000, 1);
+
+		this.levelText = this.add.text(280, 10, 'Level 2', { color: '#000000', fontSize: 24 })
+			.setScrollFactor(0)
+			.setOrigin(0.5, 0)
+			.setStroke(0x000000, 1);
     }
 
     update() {
@@ -221,6 +234,7 @@ class Scene2 extends Phaser.Scene {
 			const scrollY = this.cameras.main.scrollY;
 			if (platform.y >= scrollY + 700)
 			{
+				platform.x = Phaser.Math.Between(40, 310);
 				platform.y = scrollY - Phaser.Math.Between(50, 100);
 				platform.body.updateFromGameObject();
 			}
@@ -331,7 +345,7 @@ class Scene3 extends Phaser.Scene {
 
         for (let i = -1; i < 4; i++)
 		{
-			const x = Phaser.Math.Between(80, 280);
+			const x = Phaser.Math.Between(40, 310);
 			const y = 150 * i;
 	
 			const platform = this.platforms.create(x, y, 'platform');
@@ -356,7 +370,13 @@ class Scene3 extends Phaser.Scene {
 
 		this.scoreText = this.add.text(70, 10, 'Score: 0', { color: '#000000', fontSize: 24 })
 			.setScrollFactor(0)
-			.setOrigin(0.5, 0);
+			.setOrigin(0.5, 0)
+			.setStroke(0x000000, 1);
+
+		this.levelText = this.add.text(280, 10, 'Level 3', { color: '#000000', fontSize: 24 })
+			.setScrollFactor(0)
+			.setOrigin(0.5, 0)
+			.setStroke(0x000000, 1);
     }
 
     update() {
@@ -366,6 +386,7 @@ class Scene3 extends Phaser.Scene {
 			const scrollY = this.cameras.main.scrollY;
 			if (platform.y >= scrollY + 700)
 			{
+				platform.x = Phaser.Math.Between(40, 310);
 				platform.y = scrollY - Phaser.Math.Between(50, 100);
 				platform.body.updateFromGameObject();
 			}
